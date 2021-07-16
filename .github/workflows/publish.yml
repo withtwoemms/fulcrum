@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  crawl:
+  upload:
     runs-on: ubuntu-latest
     steps:
 
