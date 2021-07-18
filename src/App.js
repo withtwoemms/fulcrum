@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 import TopBar from "./components/TopBar";
 
 function App() {
+    const title = 'fulcrum.academy';
     const [windowState, setWindowState] = useState(
       {
         height: window.innerHeight,
@@ -39,6 +40,7 @@ function App() {
           }
         )
       }
+      document.title = title
       window.addEventListener('resize', handleResize)
       return () => {
         window.removeEventListener('resize', handleResize)
