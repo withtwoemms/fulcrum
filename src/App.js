@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Content from "./components/Content";
-import FooterMenu from "./components/FooterMenu";
-import Sidebar from "./components/Sidebar";
-import TopBar from "./components/TopBar";
+import { Route, Switch } from "react-router-dom";
+import Layout from "./components/Layout";
 
 function App() {
     const title = 'fulcrum.academy';
@@ -52,25 +50,17 @@ function App() {
       menuItems.push({ icon: `⚙`, text: "Settings" });
     }
 
+    let styling = {
+      backgroundColor: styles.black(0.05),
+      minHeight: "100vh",
+      position: "relative"
+    }
     return (
-      <div
-        style={
-          {
-            backgroundColor: styles.black(0.05),
-            minHeight: "100vh",
-            position: "relative"
-          }
-        }
-      >
-        {
-          styles.showSidebar ? (<Sidebar menuItems={menuItems} styles={styles} />) : 
-                               (<TopBar styles={styles} />)
-        }
-
-        <Content styles={styles} />
-
-        {!styles.showSidebar && (<FooterMenu menuItems={menuItems} styles={styles} />)}
-      </div>
+      <Switch>
+        <Route exact path="/">
+            <Layout styling={styling} menuItems={menuItems} otherStyles={styles} />
+        </Route>
+      </Switch>
     );
 }
 
