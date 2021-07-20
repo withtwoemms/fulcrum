@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/pages/Home";
-import Sup from "./components/pages/Sup";
+import Status from "./components/pages/Status";
 
 function App() {
     const title = 'fulcrum.academy';
@@ -33,8 +33,8 @@ function App() {
         <Route exact path="/">
           <Home windowState={windowState} />
         </Route>
-        <Route exact path="/sup">
-          <Sup windowState={windowState} />
+        <Route exact path="/status">
+          <Status windowState={windowState} />
         </Route>
       </Switch>
     );
