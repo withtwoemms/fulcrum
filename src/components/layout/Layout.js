@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FooterMenu from "./FooterMenu";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
