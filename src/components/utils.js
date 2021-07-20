@@ -1,8 +1,8 @@
 import React from 'react';
 import Content from "./Content";
 
-const contentProvider = (title, text) => {
-  return (styles) => <Content title={title} text={text} styles={styles} />
+const contentProvider = (title, text, key) => {
+  return (styles) => <Content key={key} title={title} text={text} styles={styles} />
 }
 
 export default contentProvider;
