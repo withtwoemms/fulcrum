@@ -13,11 +13,9 @@ const Content = ({ title, text, styles }) => {
   };
 
   return (
-    <div style={contentStyle}>
-      <div style={{ marginBottom: 40 }}>
-        <h2 style={{ marginBottom: 0 }}>{post.title}</h2>
-        <p>{post.summary}</p>
-      </div>
+    <div style={{ marginBottom: 40 }}>
+      <h2 style={{ marginBottom: 0 }}>{post.title}</h2>
+      <p>{post.summary}</p>
     </div>
   );
 };

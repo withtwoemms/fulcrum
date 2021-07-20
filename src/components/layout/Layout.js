@@ -40,6 +40,13 @@ function Layout({ contentProviders, windowState }) {
       menuItems = nonTransientMenuItems
     }
 
+    const contentStyling = {
+      paddingTop: styles.showSidebar ? 20 : styles.topBarHeight + 20,
+      paddingRight: 20,
+      paddingBottom: styles.showSidebar ? 20 : styles.footerMenuHeight + 20,
+      paddingLeft: styles.showSidebar ? styles.sidebarWidth + 20 : 20
+    };
+
     return (
       <div style={layoutStyling}>
         {
@@ -47,7 +54,9 @@ function Layout({ contentProviders, windowState }) {
                                (<TopBar styles={styles} />)
         }
 
-        {contentProviders.map(provider => provider(styles))}
+        <div style={contentStyling}>
+          {contentProviders.map(provider => provider(styles))}
+        </div>
 
         {!styles.showSidebar && (<FooterMenu menuItems={nonTransientMenuItems} styles={styles} />)}
       </div>
