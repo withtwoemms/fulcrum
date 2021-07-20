@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sidebar = ({ menuItems, styles }) => {
+const SideBar = ({ menuItems, styles }) => {
   const sidebarStyle = {
     height: "100vh",
     width: styles.sidebarWidth,
@@ -45,4 +45,4 @@ const Sidebar = ({ menuItems, styles }) => {
   );
 };
 
-export default Sidebar;
+export default SideBar;
