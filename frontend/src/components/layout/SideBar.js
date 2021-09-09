@@ -1,4 +1,5 @@
 import React from "react";
+import { goTo } from "../utils";
 
 const SideBar = ({ menuItems, styles }) => {
   const sidebarStyle = {
@@ -8,7 +9,6 @@ const SideBar = ({ menuItems, styles }) => {
     backgroundColor: styles.black(0.8),
     paddingTop: 40
   };
-
   const menuItemStyle = {
     display: "flex",
     justifyContent: styles.sidebarCollapsed ? "center" : "flex-start",
@@ -16,12 +16,10 @@ const SideBar = ({ menuItems, styles }) => {
     padding: `4px ${styles.sidebarCollapsed ? 0 : 10}px`,
     color: styles.white(0.9)
   };
-
   const iconStyle = {
     fontSize: 26,
     marginRight: styles.sidebarCollapsed ? 0 : 10
   };
-
   const logoStyle = {
     textAlign: "center",
     color: styles.white(),
@@ -32,10 +30,10 @@ const SideBar = ({ menuItems, styles }) => {
 
   return (
     <div style={sidebarStyle}>
-      <div style={logoStyle}>{styles.sidebarCollapsed ? "A" : "App"}</div>
+      <div onClick={() => goTo('/')} style={logoStyle}>{styles.sidebarCollapsed ? "A" : "App"}</div>
         {
-          menuItems.map((item, index) => (
-            <div style={menuItemStyle} key={index}>
+          menuItems.map((item, i) => (
+            <div key={i} onClick={item.href? () => goTo(item.href) : undefined} style={menuItemStyle}>
               <span style={iconStyle}>{item.icon}</span>
               {!styles.sidebarCollapsed && item.text}
             </div>
@@ -46,3 +44,4 @@ const SideBar = ({ menuItems, styles }) => {
 };
 
 export default SideBar;
+

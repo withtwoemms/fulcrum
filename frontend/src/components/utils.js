@@ -1,8 +1,16 @@
 import React from 'react';
 import Content from "./Content";
 
-const contentProvider = (title, text, key) => {
-  return (styles) => <Content key={key} title={title} text={text} styles={styles} />
+export const contentProvider = ({ title, text, html, key }={}) => {
+  return (styles) =>
+    <Content title={title} text={text} html={html} key={key} styles={styles} />
 }
 
-export default contentProvider;
+export const interpolate = (string, withReplacement) => {
+  return string.replace(/{(.*?)}/, withReplacement)
+}
+
+export const goTo = (pathname) => {
+  window.location.pathname = pathname
+}
+

@@ -1,6 +1,9 @@
 import React from "react";
+import { goTo } from "../utils";
 
-const TopBar = ({ styles }) => {
+const TopBar = ({ menuItems, styles }) => {
+  const [leftMenuItem, rightMenuItem] = menuItems;
+
   const topBarStyle = {
     position: "fixed",
     top: 0,
@@ -18,11 +21,12 @@ const TopBar = ({ styles }) => {
 
   return (
     <div style={topBarStyle}>
-      <span>{`👾`}</span>
-      App
-      <span>{`⚙️`}</span>
+      <span onClick={leftMenuItem.href? () => goTo(leftMenuItem.href) : undefined}>{leftMenuItem.icon}</span>
+      <span onClick={() => goTo('/')}>App</span>
+      <span onClick={rightMenuItem.href? () => goTo(rightMenuItem.href) : undefined}>{rightMenuItem.icon}</span>
     </div>
   );
 };
 
 export default TopBar;
+

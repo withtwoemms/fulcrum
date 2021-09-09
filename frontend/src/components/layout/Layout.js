@@ -3,18 +3,19 @@ import FooterMenu from "./FooterMenu";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
 
-const allMenuItems = [
+const transientMenuItems = [
+  { icon: `👾`, text: "Profile", 'transient': true, href: 'coming-soon' },
+  { icon: `⚙`, text: "Settings", 'transient': true, href: 'status' }
+];
+const nonTransientMenuItems = [
   { icon: `🔒`, text: "Item 1" },
   { icon: `🔓`, text: "Item 2" },
   { icon: `🛡️`, text: "Item 3" },
   { icon: `🔏`, text: "Item 4" },
   { icon: `🔐`, text: "Item 5" },
-  { icon: `👾`, text: "Profile", 'transient': true },
-  { icon: `⚙`, text: "Settings", 'transient': true }
 ];
-const nonTransientMenuItems = allMenuItems.filter(item => !item.transient)
 
-var menuItems = nonTransientMenuItems
+const allMenuItems = nonTransientMenuItems.concat(transientMenuItems);
 
 function Layout({ contentProviders, windowState }) {
     const sidebarCollapsed = windowState.width < 1100;
@@ -33,13 +34,6 @@ function Layout({ contentProviders, windowState }) {
       minHeight: "100vh",
       position: "relative"
     }
-
-    if (styles.showSidebar) {
-      menuItems = allMenuItems
-    } else {
-      menuItems = nonTransientMenuItems
-    }
-
     const contentStyling = {
       paddingTop: styles.showSidebar ? 20 : styles.topBarHeight + 20,
       paddingRight: 20,
@@ -50,8 +44,8 @@ function Layout({ contentProviders, windowState }) {
     return (
       <div style={layoutStyling}>
         {
-          styles.showSidebar ? (<SideBar menuItems={menuItems} styles={styles} />) : 
-                               (<TopBar styles={styles} />)
+          styles.showSidebar ? (<SideBar menuItems={allMenuItems} styles={styles} />)
+                             : (<TopBar menuItems={transientMenuItems} styles={styles} />)
         }
 
         <div style={contentStyling}>
