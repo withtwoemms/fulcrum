@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Status from "./components/pages/Status";
 
@@ -29,14 +29,16 @@ function App() {
     })
 
     return (
-      <HashRouter>
-        <Route exact path="/">
-          <Home windowState={windowState} />
-        </Route>
-        <Route exact path="/status">
-          <Status windowState={windowState} />
-        </Route>
-      </HashRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Home windowState={windowState} />
+          </Route>
+          <Route exact path="/status">
+            <Status windowState={windowState} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     );
 }
 
