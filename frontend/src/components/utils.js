@@ -10,7 +10,3 @@ export const interpolate = (string, withReplacement) => {
   return string.replace(/{(.*?)}/, withReplacement)
 }
 
-export const goTo = (pathname) => {
-  window.location.pathname = pathname
-}
-

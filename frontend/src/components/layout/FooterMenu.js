@@ -1,5 +1,5 @@
 import React from "react";
-import { goTo } from "../utils";
+import { Link } from 'react-router-dom';
 
 const FooterMenu = ({ menuItems, styles }) => {
   const footerMenuStyle = {
@@ -25,10 +25,12 @@ const FooterMenu = ({ menuItems, styles }) => {
       {
         menuItems.map((item, i) => {
           return (
-            <div key={i} onClick={item.href? () => goTo(item.href) : undefined} style={menuItemStyle}>
-              <span style={iconStyle}>{item.icon}</span>
-              {styles.showFooterMenuText && item.text}
-            </div>
+            <Link to={item.href} style={{ textDecoration: 'none' }}>
+              <div key={i} style={menuItemStyle}>
+                <span style={iconStyle}>{item.icon}</span>
+                {styles.showFooterMenuText && item.text}
+              </div>
+            </Link>
           );
         })
       }

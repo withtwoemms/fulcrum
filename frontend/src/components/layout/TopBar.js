@@ -1,5 +1,5 @@
 import React from "react";
-import { goTo } from "../utils";
+import { Link } from 'react-router-dom';
 
 const TopBar = ({ menuItems, styles }) => {
   const [leftMenuItem, rightMenuItem] = menuItems;
@@ -21,9 +21,15 @@ const TopBar = ({ menuItems, styles }) => {
 
   return (
     <div style={topBarStyle}>
-      <span onClick={leftMenuItem.href? () => goTo(leftMenuItem.href) : undefined}>{leftMenuItem.icon}</span>
-      <span onClick={() => goTo('/')}>App</span>
-      <span onClick={rightMenuItem.href? () => goTo(rightMenuItem.href) : undefined}>{rightMenuItem.icon}</span>
+      <Link to={leftMenuItem.href} style={{ textDecoration: 'none' }}>
+        <span>{leftMenuItem.icon}</span>
+      </Link>
+      <Link to='/' style={{ textDecoration: 'none' }}>
+        <span>App</span>
+      </Link>
+      <Link to={rightMenuItem.href} style={{ textDecoration: 'none' }}>
+        <span>{rightMenuItem.icon}</span>
+      </Link>
     </div>
   );
 };

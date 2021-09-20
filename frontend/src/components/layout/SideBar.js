@@ -1,5 +1,5 @@
 import React from "react";
-import { goTo } from "../utils";
+import { Link } from 'react-router-dom';
 
 const SideBar = ({ menuItems, styles }) => {
   const sidebarStyle = {
@@ -30,13 +30,17 @@ const SideBar = ({ menuItems, styles }) => {
 
   return (
     <div style={sidebarStyle}>
-      <div onClick={() => goTo('/')} style={logoStyle}>{styles.sidebarCollapsed ? "A" : "App"}</div>
+      <Link to='/' style={{ textDecoration: 'none' }}>
+        <div style={logoStyle}>{styles.sidebarCollapsed ? "A" : "App"}</div>
+      </Link>
         {
           menuItems.map((item, i) => (
-            <div key={i} onClick={item.href? () => goTo(item.href) : undefined} style={menuItemStyle}>
-              <span style={iconStyle}>{item.icon}</span>
-              {!styles.sidebarCollapsed && item.text}
-            </div>
+            <Link to={item.href} style={{ textDecoration: 'none' }}>
+              <div key={i} style={menuItemStyle}>
+                <span style={iconStyle}>{item.icon}</span>
+                {!styles.sidebarCollapsed && item.text}
+              </div>
+            </Link>
           ))
         }
     </div>
