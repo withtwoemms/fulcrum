@@ -1,0 +1,7 @@
+**/__pycache__/
+**/.nox/
+**/node_modules/
+**/build/
+README.*
+noxfile.py
+package-lock.json
