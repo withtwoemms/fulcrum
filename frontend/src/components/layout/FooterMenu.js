@@ -25,12 +25,12 @@ const FooterMenu = ({ menuItems, styles }) => {
       {
         menuItems.map((item, i) => {
           return (
-            <Link to={item.href} style={{ textDecoration: 'none' }}>
-              <div key={i} style={menuItemStyle}>
-                <span style={iconStyle}>{item.icon}</span>
+            <div key={i} style={menuItemStyle}>
+              <span style={iconStyle}>{item.icon}</span>
+              <Link to={item.href} style={{ textDecoration: 'none' }}>
                 {styles.showFooterMenuText && item.text}
-              </div>
-            </Link>
+              </Link>
+            </div>
           );
         })
       }
