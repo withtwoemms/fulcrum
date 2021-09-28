@@ -7,11 +7,13 @@ const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 function Home({ windowState }) {
   const instructionalContent = (key) => contentProvider({
+    type: 'post',
     title: 'Hello',
-    text: 'Text in this list belongs to a "Content" component. Content components are passed as a collection to a "Layout" component for rendering. A "Page" is a simple component that receives windowState, provides content, and returns a Layout. This page is the "Home" page.',
+    text: 'Text in this list belongs to a "Post" component. Post components are passed as a collection to a "Layout" component for rendering. A "Page" is a simple component that receives windowState, provides content, and returns a Layout. This page is the "Home" page.',
     key: key
   })
   const genericContentPartial = (key) => contentProvider({
+    type: 'post',
     title: contentTitle,
     text: loremIpsum,
     key: key

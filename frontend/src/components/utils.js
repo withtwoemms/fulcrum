@@ -1,9 +1,13 @@
 import React from 'react';
-import Content from "./Content";
+import Form from "./content/Form";
+import Post from "./content/Post";
 
-export const contentProvider = ({ title, text, html, key }={}) => {
-  return (styles) =>
-    <Content title={title} text={text} html={html} key={key} styles={styles} />
+export const contentProvider = ({ title, text, html, key, type }={}) => {
+  const contentTypes = {
+    'form': (styles) => <Form title={title} text={text} html={html} key={key} styles={styles} />,
+    'post': (styles) => <Post title={title} text={text} html={html} key={key} styles={styles} />,
+  }
+  return (styles) => contentTypes[type](styles)
 }
 
 export const interpolate = (string, withReplacement) => {

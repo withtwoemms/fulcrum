@@ -5,6 +5,7 @@ import { contentProvider, interpolate } from "../utils";
 function NotFound({ windowState }) {
   const contentList = [
     contentProvider({
+      type: 'post',
       title: '404',
       text: 'No page found at the path above.',
       html: interpolate('<code>{}</code>', window.location.pathname),

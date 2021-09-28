@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Contact from "./components/pages/Contact";
 import Home from "./components/pages/Home";
-import Status from "./components/pages/Status";
 import NotFound from "./components/pages/NotFound";
+import Status from "./components/pages/Status";
 
 function App() {
     const title = 'fulcrum.academy';
@@ -32,15 +33,10 @@ function App() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
-            <Home windowState={windowState} />
-          </Route>
-          <Route exact path="/status">
-            <Status windowState={windowState} />
-          </Route>
-          <Route path="*">
-            <NotFound windowState={windowState} />
-          </Route>
+          <Route exact path="/" component={() => (<Home windowState={windowState} />)} />
+          <Route exact path="/status" component={() => (<Status windowState={windowState} />)} />
+          <Route exact path="/contact" component={() => (<Contact windowState={windowState} />)} />
+          <Route exact path="*" component={() => (<NotFound windowState={windowState} />)} />
         </Switch>
       </BrowserRouter>
     );
