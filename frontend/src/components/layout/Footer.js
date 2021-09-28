@@ -26,12 +26,12 @@ const Footer = ({ menuItems, styles }) => {
       {
         menuItems.map((item, i) => {
           return (
-            <div key={i} style={menuItemStyle}>
-              <span style={iconStyle}>{item.icon}</span>
-              <Link to={item.href} style={linkStyle()}>
+            <Link to={item.href} style={{...linkStyle(), ...menuItemStyle}}>
+              <div key={i}>
+                <span style={iconStyle}>{item.icon}</span>
                 {styles.showFooterText && item.text}
-              </Link>
-            </div>
+              </div>
+            </Link>
           );
         })
       }
