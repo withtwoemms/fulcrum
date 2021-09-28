@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { linkStyle } from "../utils";
 
-const TopBar = ({ menuItems, styles }) => {
+const Header = ({ menuItems, styles }) => {
   const [leftMenuItem, rightMenuItem] = menuItems;
 
   const topBarStyle = {
@@ -21,18 +22,18 @@ const TopBar = ({ menuItems, styles }) => {
 
   return (
     <div style={topBarStyle}>
-      <Link to={leftMenuItem.href} style={{ textDecoration: 'none' }}>
+      <Link to={leftMenuItem.href} style={linkStyle()}>
         <span>{leftMenuItem.icon}</span>
       </Link>
-      <Link to='/' style={{ textDecoration: 'none' }}>
+      <Link to='/' style={linkStyle("#000")}>
         <span>App</span>
       </Link>
-      <Link to={rightMenuItem.href} style={{ textDecoration: 'none' }}>
+      <Link to={rightMenuItem.href} style={linkStyle()}>
         <span>{rightMenuItem.icon}</span>
       </Link>
     </div>
   );
 };
 
-export default TopBar;
+export default Header;
 

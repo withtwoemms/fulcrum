@@ -1,7 +1,7 @@
 import React from "react";
-import FooterMenu from "./FooterMenu";
+import Footer from "./Footer";
 import SideBar from "./SideBar";
-import TopBar from "./TopBar";
+import Header from "./Header";
 
 const transientMenuItems = [
   { icon: `👾`, text: "Profile", 'transient': true, href: 'coming-soon' },
@@ -24,7 +24,7 @@ function Layout({ contentProviders, windowState }) {
       black: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
       topBarHeight: 40,
       footerMenuHeight: 50,
-      showFooterMenuText: windowState.width > 500,
+      showFooterText: windowState.width > 500,
       showSidebar: windowState.width > 768,
       sidebarCollapsed,
       sidebarWidth: sidebarCollapsed ? 50 : 150
@@ -45,14 +45,14 @@ function Layout({ contentProviders, windowState }) {
       <div style={layoutStyling}>
         {
           styles.showSidebar ? (<SideBar menuItems={allMenuItems} styles={styles} />)
-                             : (<TopBar menuItems={transientMenuItems} styles={styles} />)
+                             : (<Header menuItems={transientMenuItems} styles={styles} />)
         }
 
         <div style={contentStyling}>
           {contentProviders.map(provider => provider(styles))}
         </div>
 
-        {!styles.showSidebar && (<FooterMenu menuItems={nonTransientMenuItems} styles={styles} />)}
+        {!styles.showSidebar && (<Footer menuItems={nonTransientMenuItems} styles={styles} />)}
       </div>
     );
 }

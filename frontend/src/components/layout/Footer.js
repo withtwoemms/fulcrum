@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { linkStyle } from "../utils";
 
-const FooterMenu = ({ menuItems, styles }) => {
+const Footer = ({ menuItems, styles }) => {
   const footerMenuStyle = {
     display: "flex",
     alignItems: "stretch",
@@ -27,8 +28,8 @@ const FooterMenu = ({ menuItems, styles }) => {
           return (
             <div key={i} style={menuItemStyle}>
               <span style={iconStyle}>{item.icon}</span>
-              <Link to={item.href} style={{ textDecoration: 'none' }}>
-                {styles.showFooterMenuText && item.text}
+              <Link to={item.href} style={linkStyle()}>
+                {styles.showFooterText && item.text}
               </Link>
             </div>
           );
@@ -38,5 +39,5 @@ const FooterMenu = ({ menuItems, styles }) => {
   );
 };
 
-export default FooterMenu;
+export default Footer;
 

@@ -14,3 +14,10 @@ export const interpolate = (string, withReplacement) => {
   return string.replace(/{(.*?)}/, withReplacement)
 }
 
+export const linkStyle = (color = '#fff') => {
+  return {
+    textDecoration: 'none',
+    color: color,
+  }
+}
+

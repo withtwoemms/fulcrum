@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { linkStyle } from "../utils";
 
 const SideBar = ({ menuItems, styles }) => {
   const sidebarStyle = {
@@ -30,12 +31,12 @@ const SideBar = ({ menuItems, styles }) => {
 
   return (
     <div style={sidebarStyle}>
-      <Link to='/' style={{ textDecoration: 'none' }}>
+      <Link to='/' style={linkStyle()}>
         <div style={logoStyle}>{styles.sidebarCollapsed ? "A" : "App"}</div>
       </Link>
         {
           menuItems.map((item, i) => (
-            <Link key={i} to={item.href || 'route-not-found'} style={{ textDecoration: 'none' }}>
+            <Link key={i} to={item.href || 'route-not-found'} style={linkStyle()}>
               <div style={menuItemStyle}>
                 <span style={iconStyle}>{item.icon}</span>
                 {!styles.sidebarCollapsed && item.text}
