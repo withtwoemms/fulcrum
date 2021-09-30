@@ -1,6 +1,7 @@
 import json
 
 from actionpack.actions import WriteBytes
+from actionpack.actions import ReadBytes
 from enum import Enum
 from flask import Flask
 from flask import make_response
@@ -16,6 +17,8 @@ app = Flask(__name__, static_folder=str(frontend_build), static_url_path='/')
 
 default_app_env = 'development'
 
+form_results_filepath = './form.results'
+
 class Environment(Enum):
     development = default_app_env
     live = 'live'
@@ -29,8 +32,20 @@ def deliver_frontend(error):
 
 @app.route('/contact', methods=['POST'])
 def handle_form_data():
-    result = WriteBytes('./form.results', request.data, append=True).perform(should_raise=True)
+    result = WriteBytes(form_results_filepath, request.data, append=True).perform(should_raise=True)
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
+
+@app.route('/admin', methods=['GET'])
+def view_form_results():
+    result = ReadBytes(form_results_filepath).perform(should_raise=True)
+
+    # TODO (withtwoemms) -- refactor check when actionpack#74 is resolved; released
+    if isinstance(result.value, Exception):
+        return json.dumps({'failed': str(result.value)}), 500, {'ContentType':'application/json'}
+
+    replaced = result.value.decode().rstrip('\n').replace('\n', ',')
+    return json.dumps({'succeeded': json.loads(f'[{replaced}]')}), 200, {'ContentType':'application/json'}
 
 
 if __name__ == '__main__':
