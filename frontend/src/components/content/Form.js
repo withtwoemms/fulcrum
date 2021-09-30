@@ -6,7 +6,13 @@ const Form = ({ title, text, html='', key=null }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Submitting Name ${value}`);
+    fetch(document.URL, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify({
+        name: value
+      }),
+    })
     reset();
   }
 

@@ -1,5 +1,10 @@
+import json
+
+from actionpack.actions import WriteBytes
 from enum import Enum
 from flask import Flask
+from flask import make_response
+from flask import request
 from os import environ as envvars
 from pathlib import Path
 
@@ -20,6 +25,12 @@ class Environment(Enum):
 @app.errorhandler(404)
 def deliver_frontend(error):
     return app.send_static_file('index.html')
+
+
+@app.route('/contact', methods=['POST'])
+def handle_form_data():
+    result = WriteBytes('./form.results', request.data, append=True).perform(should_raise=True)
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
 if __name__ == '__main__':
