@@ -8,20 +8,16 @@ function Admin({ windowState }) {
   let fetched = false;
 
   async function getData() {
-    await fetch(document.URL, {
+    await fetch(`${document.URL}_`, {
       method: 'GET',
       mode: 'cors',
     })
     .then(response => {
-      if (response.ok) {
-        return response.text();
-      } else {
-        console.log(`ERROR: ${response}`)
-      }
+      let text = response.text()
+      text.then(text => { setAPIResult(JSON.parse(text).result) })
     })
-    .then(data => {
-      setAPIResult(JSON.parse(data).succeeded)
-      fetched = true;
+    .finally(() => {
+      fetched = true
     })
   }
 

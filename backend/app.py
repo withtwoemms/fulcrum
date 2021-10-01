@@ -36,15 +36,18 @@ def handle_form_data():
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 
-@app.route('/admin', methods=['GET'])
+@app.route('/admin_', methods=['GET'])
 def view_form_results():
-    result = ReadBytes(form_results_filepath).perform(should_raise=True)
+    result = ReadBytes(form_results_filepath).perform()
 
+    #TODO (withwoemms) -- consider re-contextualizing errors as this info is 'need-to-know'
     if not result.successful:
-        return json.dumps({'failed': str(result.value)}), 500, {'ContentType':'application/json'}
+        failure = result.value
+        payload = {'result': [f'{failure.__class__.__name__}: {str(failure)}']}
+        return json.dumps(payload), 500, {'ContentType':'application/json'}
 
     replaced = result.value.decode().rstrip('\n').replace('\n', ',')
-    return json.dumps({'succeeded': json.loads(f'[{replaced}]')}), 200, {'ContentType':'application/json'}
+    return json.dumps({'result': json.loads(f'[{replaced}]')}), 200, {'ContentType':'application/json'}
 
 
 if __name__ == '__main__':
