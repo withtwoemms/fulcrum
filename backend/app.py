@@ -40,8 +40,7 @@ def handle_form_data():
 def view_form_results():
     result = ReadBytes(form_results_filepath).perform(should_raise=True)
 
-    # TODO (withtwoemms) -- refactor check when actionpack#74 is resolved; released
-    if isinstance(result.value, Exception):
+    if not result.successful:
         return json.dumps({'failed': str(result.value)}), 500, {'ContentType':'application/json'}
 
     replaced = result.value.decode().rstrip('\n').replace('\n', ',')
