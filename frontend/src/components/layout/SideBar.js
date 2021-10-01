@@ -36,7 +36,7 @@ const SideBar = ({ menuItems, styles }) => {
       </Link>
         {
           menuItems.map((item, i) => (
-            <Link key={i} to={item.href || 'no-route-found'} style={linkStyle()}>
+            <Link key={i} to={item.href || 'route-not-found'} style={linkStyle()}>
               <div style={menuItemStyle}>
                 <span style={iconStyle}>{item.icon}</span>
                 {!styles.sidebarCollapsed && item.text}
