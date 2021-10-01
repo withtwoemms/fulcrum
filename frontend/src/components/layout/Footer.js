@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { linkStyle } from "../utils";
 
 const Footer = ({ menuItems, styles }) => {
-  const footerMenuStyle = {
+  const footerStyle = {
     display: "flex",
     alignItems: "stretch",
     width: "100%",
@@ -22,11 +22,11 @@ const Footer = ({ menuItems, styles }) => {
   const iconStyle = { marginRight: 5, fontSize: 20 }
 
   return (
-    <div style={footerMenuStyle}>
+    <div style={footerStyle}>
       {
         menuItems.map((item, i) => {
           return (
-            <Link to={item.href} style={{...linkStyle(), ...menuItemStyle}}>
+            <Link to={item.href || 'route-not-found'} style={{...linkStyle(), ...menuItemStyle}}>
               <div key={i}>
                 <span style={iconStyle}>{item.icon}</span>
                 {styles.showFooterText && item.text}

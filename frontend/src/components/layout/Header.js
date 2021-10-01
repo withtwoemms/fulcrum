@@ -5,14 +5,14 @@ import { linkStyle } from "../utils";
 const Header = ({ menuItems, styles }) => {
   const [leftMenuItem, rightMenuItem] = menuItems;
 
-  const topBarStyle = {
+  const headerStyle = {
     position: "fixed",
     top: 0,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    height: styles.topBarHeight,
+    height: styles.headerHeight,
     backgroundColor: "#fff",
     borderBottom: "1px solid #d8d8d8",
     fontWeight: "bold",
@@ -21,7 +21,7 @@ const Header = ({ menuItems, styles }) => {
   };
 
   return (
-    <div style={topBarStyle}>
+    <div style={headerStyle}>
       <Link to={leftMenuItem.href} style={linkStyle()}>
         <span>{leftMenuItem.icon}</span>
       </Link>

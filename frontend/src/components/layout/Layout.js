@@ -22,8 +22,8 @@ function Layout({ contentProviders, windowState }) {
     const styles = {
       white: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
       black: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-      topBarHeight: 40,
-      footerMenuHeight: 50,
+      headerHeight: 40,
+      footerHeight: 50,
       showFooterText: windowState.width > 500,
       showSidebar: windowState.width > 768,
       sidebarCollapsed,
@@ -35,9 +35,9 @@ function Layout({ contentProviders, windowState }) {
       position: "relative"
     }
     const contentStyling = {
-      paddingTop: styles.showSidebar ? 20 : styles.topBarHeight + 20,
+      paddingTop: styles.showSidebar ? 20 : styles.headerHeight + 20,
       paddingRight: 20,
-      paddingBottom: styles.showSidebar ? 20 : styles.footerMenuHeight + 20,
+      paddingBottom: styles.showSidebar ? 20 : styles.footerHeight + 20,
       paddingLeft: styles.showSidebar ? styles.sidebarWidth + 20 : 20
     };
 
