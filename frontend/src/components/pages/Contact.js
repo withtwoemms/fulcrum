@@ -21,25 +21,25 @@ function Contact({ windowState }) {
         inputListProvider({
           info: [
             {
-              key: "firstName",
+              name: "firstName",
               placeholder: "First name",
               type: "text",
               validation: {required: true, maxLength: 80}
             },
             {
-              key: "lastName",
+              name: "lastName",
               placeholder: "Last name",
               type: "text",
               validation: {required: true, maxLength: 100}
             },
             {
-              key: "email",
+              name: "email",
               placeholder: "Email",
               type: "text",
               validation: {required: true, pattern: /^\S+@\S+$/i}
             },
             {
-              key: "mobileNumber",
+              name: "mobileNumber",
               placeholder: "Mobile Number",
               type: "tel",
               validation: {maxLength: 12}

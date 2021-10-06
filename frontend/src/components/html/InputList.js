@@ -7,9 +7,9 @@ const InputList = ({ info, register, errors }) => {
         <input
           type={item.type}
           placeholder={item.placeholder}
-          {...register(item.key, item.validator)}
+          {...register(item.name, item.validation)}
         />
-        {errors[item.key] && <span>This is required</span>}
+        {errors[item.name] && <span>This is required</span>}
       </div>
     ))
   )
