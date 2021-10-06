@@ -13,12 +13,10 @@ function Admin({ windowState }) {
       mode: 'cors',
     })
     .then(response => {
-      let text = response.text()
-      text.then(text => { setAPIResult(JSON.parse(text).result) })
+      response.text()
+        .then(text => { setAPIResult(JSON.parse(text).result) })
     })
-    .finally(() => {
-      fetched = true
-    })
+    .finally(() => { fetched = true })
   }
 
   useEffect(() => {getData()}, [fetched])

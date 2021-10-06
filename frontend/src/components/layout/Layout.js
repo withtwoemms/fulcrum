@@ -32,13 +32,15 @@ function Layout({ contentProviders, windowState }) {
     const layoutStyling = {
       backgroundColor: styles.black(0.05),
       minHeight: "100vh",
-      position: "relative"
+      position: "relative",
     }
     const contentStyling = {
       paddingTop: styles.showSidebar ? 20 : styles.headerHeight + 20,
       paddingRight: 20,
       paddingBottom: styles.showSidebar ? 20 : styles.footerHeight + 20,
-      paddingLeft: styles.showSidebar ? styles.sidebarWidth + 20 : 20
+      paddingLeft: styles.showSidebar ? styles.sidebarWidth + 20 : 20,
+      whiteSpace: 'pre-wrap',
+      overflowWrap: 'break-word',
     };
 
     return (
